@@ -64,8 +64,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Log.i(mTAG, "contact")
             }
 
-            R.id.bug -> {
-                Log.i(mTAG, "bug")
+            R.id.settings -> {
+                Log.i(mTAG, "settings")
             }
         }
 
