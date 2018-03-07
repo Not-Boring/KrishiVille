@@ -15,4 +15,6 @@
     <string name="bug_report_label">Bug report</string>
     <string name="username_placeholder">!Not Boring</string>
     <string name="user_email">not.boring.ai@gmail.com</string>
+    <string name="profile_pic_description">User\'s profile picture</string>
+    <string name="settings_label">Settings</string>
 </resources>
