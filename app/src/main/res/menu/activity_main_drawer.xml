@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:title="@string/home_label" />
+        <item
+            android:id="@+id/buy"
+            android:title="@string/buy_label" />
+        <item
+            android:id="@+id/sell"
+            android:title="@string/sell_label" />
+        <item
+            android:id="@+id/about"
+            android:title="@string/about_label" />
+    </group>
+
+    <item android:title="@string/get_help_label">
+        <menu>
+            <item
+                android:id="@+id/contact"
+                android:title="@string/contact_label" />
+            <item
+                android:id="@+id/bug"
+                android:title="@string/bug_report_label" />
+        </menu>
+    </item>
+
+</menu>
