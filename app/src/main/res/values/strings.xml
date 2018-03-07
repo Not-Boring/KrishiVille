@@ -17,4 +17,8 @@
     <string name="user_email">not.boring.ai@gmail.com</string>
     <string name="profile_pic_description">User\'s profile picture</string>
     <string name="settings_label">Settings</string>
+    <string name="sign_in_cancelled">Sign in cancelled!</string>
+    <string name="no_internet_connection">No internet connection!</string>
+    <string name="unknown_error">An unknown error occurred!</string>
+    <string name="logout_label">Logout</string>
 </resources>
