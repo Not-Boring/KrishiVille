@@ -1,5 +1,6 @@
 package ai.notboring.krishiville
 
+import ai.notboring.krishiville.dummy.DummyContent
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -8,21 +9,17 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
+import com.bumptech.glide.Glide
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.AuthUI.IdpConfig
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import java.util.*
-import com.firebase.ui.auth.ErrorCodes
-import android.app.Activity
-import com.firebase.ui.auth.IdpResponse
-import android.support.annotation.NonNull
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(),
+        NavigationView.OnNavigationItemSelectedListener,
+        ProductFragment.OnListFragmentInteractionListener {
 
     private val mTAG = "ai.nb.kv"
 
@@ -37,6 +34,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        val auth = FirebaseAuth.getInstance()
+        val navHead = nav_view.getHeaderView(0)
+
+        navHead.userName.text = auth.currentUser!!.displayName
+        navHead.userEmail.text = auth.currentUser!!.email
+
+        Glide
+                .with(this)
+                .load(auth.currentUser!!.photoUrl)
+                .into(navHead.userImage)
+
+        launchBuyerFragment()
+    }
+
+    override fun onListFragmentInteraction(item: DummyContent.DummyItem) {
+        Log.i(mTAG, "Clicked $item")
     }
 
     override fun onBackPressed() {
@@ -53,6 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             R.id.buy -> {
                 Log.i(mTAG, "buy")
+                launchBuyerFragment()
             }
 
             R.id.sell -> {
@@ -88,5 +103,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun launchBuyerFragment() {
+        val fragment = ProductFragment.newInstance(2)
+        val transaction = supportFragmentManager.beginTransaction()
+
+        transaction.replace(R.id.fragment_container, fragment).commit()
+    }
+
+    private fun launchSellerFragment() {
+        TODO("Create seller fragment!")
     }
 }

@@ -2,16 +2,16 @@ package ai.notboring.krishiville
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_onboarding.*
 import java.util.*
-import android.support.constraint.ConstraintLayout
-import android.support.design.widget.Snackbar
 
 
 class OnboardingActivity : AppCompatActivity() {
@@ -50,7 +50,7 @@ class OnboardingActivity : AppCompatActivity() {
                                     googleProvider))
                             .setIsSmartLockEnabled(!BuildConfig.DEBUG /* credentials */, true)
                             .setTheme(R.style.AppTheme)
-                            .setLogo(R.drawable.not_boring)
+                            .setLogo(R.mipmap.ic_launcher_round)
                             .build(),
                     RC_SIGN_IN)
         }
@@ -91,7 +91,7 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun showSnackbar(message: Int) {
-        Snackbar.make(findViewById<ConstraintLayout>(R.id.onboarder), message, Snackbar.LENGTH_LONG)
+        Snackbar.make(onboarder, message, Snackbar.LENGTH_LONG)
                 .setAction("Dismiss", null).show()
     }
 
