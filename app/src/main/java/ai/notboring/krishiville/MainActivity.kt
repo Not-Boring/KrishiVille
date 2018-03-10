@@ -1,6 +1,6 @@
 package ai.notboring.krishiville
 
-import ai.notboring.krishiville.dummy.DummyContent
+
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(),
         launchBuyerFragment()
     }
 
-    override fun onListFragmentInteraction(item: DummyContent.DummyItem) {
+    override fun onListFragmentInteraction(item: ProductItem) {
         Log.i(mTAG, "Clicked $item")
     }
 
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun launchBuyerFragment() {
-        val fragment = ProductFragment.newInstance(2)
+        val fragment = ProductFragment.newInstance()
         val transaction = supportFragmentManager.beginTransaction()
 
         transaction.replace(R.id.fragment_container, fragment).commit()
