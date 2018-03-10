@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 class MainActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener,
-        ProductFragment.OnListFragmentInteractionListener {
+        ProductBuyFragment.OnListFragmentInteractionListener {
 
     private val mTAG = "ai.nb.kv"
 
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun launchBuyerFragment() {
-        val fragment = ProductFragment.newInstance()
+        val fragment = ProductBuyFragment.newInstance()
         val transaction = supportFragmentManager.beginTransaction()
 
         transaction.replace(R.id.fragment_container, fragment).commit()

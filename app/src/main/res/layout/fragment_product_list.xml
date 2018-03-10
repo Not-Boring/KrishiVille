@@ -9,5 +9,5 @@
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="ai.notboring.krishiville.ProductFragment"
+    tools:context="ai.notboring.krishiville.ProductBuyFragment"
     tools:listitem="@layout/fragment_product" />

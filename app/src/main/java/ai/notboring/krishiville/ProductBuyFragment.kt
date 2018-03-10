@@ -30,7 +30,7 @@ import android.support.v7.widget.LinearLayoutManager
  * Mandatory empty constructor for the fragment manager to instantiate the
  * fragment (e.g. upon screen orientation changes).
  */
-class ProductFragment : Fragment() {
+class ProductBuyFragment : Fragment() {
     private val mTAG = "ai.nb.kv"
 
     private var mListener: OnListFragmentInteractionListener? = null
@@ -141,8 +141,8 @@ class ProductFragment : Fragment() {
     companion object {
 
         // TODO: Customize parameter initialization
-        fun newInstance(): ProductFragment {
-            return ProductFragment()
+        fun newInstance(): ProductBuyFragment {
+            return ProductBuyFragment()
         }
     }
 }
