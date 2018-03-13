@@ -15,6 +15,10 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
+import android.support.design.widget.BottomSheetBehavior
+import android.view.View
+
+
 
 
 class MainActivity : AppCompatActivity(),
@@ -45,6 +49,12 @@ class MainActivity : AppCompatActivity(),
                 .with(this)
                 .load(auth.currentUser!!.photoUrl)
                 .into(navHead.userImage)
+
+        val fab = findViewById<View>(R.id.fab)
+        val llBottomSheet = findViewById<View>(R.id.bottom_sheet)
+
+        // init the bottom sheet behavior
+        val bottomSheetBehavior = BottomSheetBehavior.from(llBottomSheet)
 
         launchBuyerFragment()
     }

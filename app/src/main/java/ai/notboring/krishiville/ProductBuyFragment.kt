@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Button
+import android.widget.Toast
 
 
 /**
@@ -67,7 +68,16 @@ class ProductBuyFragment : Fragment() {
                     holder.type.text = model.type
                     holder.price.text = "₹ ${model.price}"
 
-                    holder.buy.setOnClickListener({view -> Log.i(mTAG, "Clicked on ${model.name}")})
+                    holder.buy.setOnClickListener(
+                            {
+                                view ->
+                                Log.i(mTAG, "Clicked on ${model.name}")
+
+                                Toast.makeText(view.context,
+                                        "${model.name}",
+                                        Toast.LENGTH_SHORT)
+                                        .show()
+                            })
                 }
 
                 override fun onCreateViewHolder(group: ViewGroup, i: Int): ProductItemHolder {
