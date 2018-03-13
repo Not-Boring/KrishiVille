@@ -3,6 +3,7 @@ package ai.notboring.krishiville
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,9 +15,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import android.support.v7.widget.LinearLayoutManager
-
-
-
+import android.widget.Button
 
 
 /**
@@ -53,23 +52,22 @@ class ProductBuyFragment : Fragment() {
         if (view is RecyclerView) {
             val context = view.context
 
-            val linearLayoutManager = LinearLayoutManager(
+            val gridLayoutManager = GridLayoutManager(
                     context,
-                    LinearLayoutManager.VERTICAL,
-                    false
+                    2
             )
 
             mProductList = view.findViewById(R.id.list)
-            mProductList?.layoutManager = linearLayoutManager
+            mProductList?.layoutManager = gridLayoutManager
 
             mAdapter = object : FirestoreRecyclerAdapter<ProductItem, ProductItemHolder>(options) {
                 override fun onBindViewHolder(holder: ProductItemHolder, position: Int, model: ProductItem) {
                     // Bind the ProductItem object to the ProductItemHolder
                     holder.title.text = model.name
+                    holder.type.text = model.type
+                    holder.price.text = "₹ ${model.price}"
 
-                    holder.itemView.setOnClickListener {
-                        Log.i(mTAG, "Clicked on ${holder.title.text}")
-                    }
+                    holder.buy.setOnClickListener({view -> Log.i(mTAG, "Clicked on ${model.name}")})
                 }
 
                 override fun onCreateViewHolder(group: ViewGroup, i: Int): ProductItemHolder {
@@ -95,6 +93,9 @@ class ProductBuyFragment : Fragment() {
 
     class ProductItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         internal var title: TextView = itemView.findViewById(R.id.name) as TextView
+        internal var type: TextView = itemView.findViewById(R.id.type) as TextView
+        internal var price: TextView = itemView.findViewById(R.id.price) as TextView
+        internal var buy: TextView = itemView.findViewById(R.id.purchase) as TextView
 
     }
 
